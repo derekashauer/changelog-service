@@ -81,7 +81,7 @@ class Changelog_Service_Shortcode {
 	 *
 	 * @return array
 	 */
-	private function get_badge_configs(): array {
+	public function get_badge_configs(): array {
 		if ( isset( $this->badge_configs ) ) {
 			return $this->badge_configs;
 		}

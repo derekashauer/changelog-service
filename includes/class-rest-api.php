@@ -121,7 +121,7 @@ class Changelog_Service_REST_API {
 		$post = $posts[0];
 
 		return new WP_REST_Response(
-			$this->format_changelog( $post ),
+			self::format_changelog( $post ),
 			200
 		);
 	}
@@ -149,7 +149,7 @@ class Changelog_Service_REST_API {
 
 		$changelogs = array();
 		foreach ( $query->posts as $post ) {
-			$changelogs[] = $this->format_changelog( $post, false );
+			$changelogs[] = self::format_changelog( $post, false );
 		}
 
 		$response = new WP_REST_Response(
@@ -177,7 +177,7 @@ class Changelog_Service_REST_API {
 	 * @param bool    $include_full Include full changelog content.
 	 * @return array
 	 */
-	private function format_changelog( WP_Post $post, bool $include_full = true ): array {
+	public static function format_changelog( WP_Post $post, bool $include_full = true ): array {
 		$type = get_post_meta( $post->ID, 'type', true ) ?: 'plugin';
 
 		$data = array(

@@ -73,6 +73,7 @@ final class Changelog_Service {
 		require_once CAAS_PLUGIN_DIR . 'includes/class-changelog-service-shortcode.php';
 		require_once CAAS_PLUGIN_DIR . 'includes/class-block.php';
 		require_once CAAS_PLUGIN_DIR . 'includes/class-rest-api.php';
+		require_once CAAS_PLUGIN_DIR . 'includes/class-abilities.php';
 	}
 
 	/**
@@ -92,6 +93,7 @@ final class Changelog_Service {
 		new Changelog_Service_Shortcode();
 		new Changelog_Service_Block();
 		new Changelog_Service_REST_API();
+		new Changelog_Service_Abilities();
 	}
 
 	/**

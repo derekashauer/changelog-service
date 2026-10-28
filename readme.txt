@@ -126,6 +126,10 @@ Yes! This changelog plugin provides REST API endpoints for changelog data:
 
 Perfect for automation, syndication, or integrating with external services.
 
+= Can AI agents update my changelogs? =
+
+Yes, on WordPress 6.9 or newer. The plugin adds four abilities that AI tools can use: list your changelogs, read one, add a new release to the top, and change a changelog's text or details (version, tested up to, and so on). Connect your AI tool with the [MCP Adapter](https://github.com/WordPress/mcp-adapter) plugin and an application password, and the agent gets the same permissions as the user it logs in as, so it can only change changelogs that user could edit in wp-admin.
+
 = Does this integrate with Easy Digital Downloads? =
 
 Yes! If you have EDD Software Licensing active, you can display changelogs for your EDD products using the `edd_id` attribute: `[changelog_service edd_id="456"]`. This is perfect for premium plugin developers managing product changelogs.
@@ -167,6 +171,9 @@ You can also enable this globally in **Changelogs > Settings > Display** by chec
 4. Gutenberg block interface in the editor - select changelog and configure display options with the modern block editor
 
 == Changelog ==
+
+= Unreleased =
+* Added: AI agents can list, read and update changelogs through WordPress abilities (WordPress 6.9+), including adding a new release to the top
 
 = 1.3.3 - September 15, 2026 =
 * Fix: Changelogs pulled from Easy Digital Downloads Software Licensing showed a backslash before quotes and apostrophes

@@ -305,22 +305,41 @@ class Changelog_Service_Meta_Fields {
 
 		foreach ( $fields as $meta_key => $post_key ) {
 			if ( isset( $_POST[ $post_key ] ) ) {
-				$value = 'homepage' === $meta_key
-					? esc_url_raw( wp_unslash( $_POST[ $post_key ] ) )
-					: sanitize_text_field( wp_unslash( $_POST[ $post_key ] ) );
-
-				// Validate type field.
-				if ( 'type' === $meta_key && ! in_array( $value, array( 'plugin', 'theme', 'host' ), true ) ) {
-					$value = 'plugin'; // Default to plugin if invalid.
-				}
-
-				update_post_meta( $post_id, $meta_key, $value );
+				// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized in sanitize_field().
+				update_post_meta( $post_id, $meta_key, self::sanitize_field( $meta_key, wp_unslash( $_POST[ $post_key ] ) ) );
 			}
 		}
 
-		// Clear fields that shouldn't exist for host type.
-		$type = get_post_meta( $post_id, 'type', true );
-		if ( 'host' === $type ) {
+		self::clear_host_fields( $post_id );
+	}
+
+	/**
+	 * Sanitize a single meta field value.
+	 *
+	 * @param string $meta_key Meta key.
+	 * @param mixed  $value    Raw value.
+	 * @return string
+	 */
+	public static function sanitize_field( string $meta_key, $value ): string {
+		$value = 'homepage' === $meta_key
+			? esc_url_raw( (string) $value )
+			: sanitize_text_field( (string) $value );
+
+		// Validate type field.
+		if ( 'type' === $meta_key && ! in_array( $value, array( 'plugin', 'theme', 'host' ), true ) ) {
+			$value = 'plugin'; // Default to plugin if invalid.
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Clear fields that shouldn't exist for host type.
+	 *
+	 * @param int $post_id The post ID.
+	 */
+	public static function clear_host_fields( int $post_id ): void {
+		if ( 'host' === get_post_meta( $post_id, 'type', true ) ) {
 			delete_post_meta( $post_id, 'version' );
 			delete_post_meta( $post_id, 'tested' );
 			delete_post_meta( $post_id, 'requires' );
