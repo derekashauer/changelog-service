@@ -324,6 +324,8 @@ class Changelog_Service_Abilities {
 			'paged'          => $page,
 			'orderby'        => 'modified',
 			'order'          => 'DESC',
+			// Only changelogs this user can edit, like get-changelog allows.
+			'perm'           => 'editable',
 		);
 		if ( ! empty( $input['search'] ) ) {
 			$args['s'] = sanitize_text_field( $input['search'] );
@@ -388,16 +390,15 @@ class Changelog_Service_Abilities {
 			return $post;
 		}
 
-		$shortcode = new Changelog_Service_Shortcode();
-		$version   = sanitize_text_field( (string) $input['version'] );
-		$number    = $shortcode->parse_version_string( $version )['version'];
+		$version = sanitize_text_field( (string) $input['version'] );
 
-		foreach ( $shortcode->get_parsed_changelog( $post->post_content ) as $existing ) {
-			if ( $shortcode->parse_version_string( $existing['version'] )['version'] === $number ) {
+		foreach ( ( new Changelog_Service_Shortcode() )->get_parsed_changelog( $post->post_content ) as $existing ) {
+			// A header is this version when the version is followed by nothing, a space, ":" or "|" (then a date).
+			if ( preg_match( '/^' . preg_quote( $version, '/' ) . '(?=$|\s|[:|])/', $existing['version'] ) ) {
 				return new WP_Error(
 					'version_exists',
 					/* translators: %s: version number */
-					sprintf( __( 'Version %s is already in this changelog. Use update-changelog to change it.', 'changelog-service' ), $number ),
+					sprintf( __( 'Version %s is already in this changelog. Use update-changelog to change it.', 'changelog-service' ), $version ),
 					array( 'status' => 409 )
 				);
 			}
@@ -423,7 +424,7 @@ class Changelog_Service_Abilities {
 		$content = implode( "\n", $lines ) . ( '' === $old ? '' : "\n\n" . $old );
 		$meta    = array();
 		if ( ( $input['set_version'] ?? true ) && 'host' !== get_post_meta( $post->ID, 'type', true ) ) {
-			$meta['version'] = $number;
+			$meta['version'] = $version;
 		}
 
 		return $this->save( $post, array( 'changelog_raw' => $content ) + $meta, ! empty( $input['dry_run'] ) );
@@ -496,12 +497,11 @@ class Changelog_Service_Abilities {
 			return $data;
 		}
 
-		if ( ! empty( $postarr ) ) {
-			// wp_update_post() expects slashed data.
-			$result = wp_update_post( wp_slash( array( 'ID' => $post->ID ) + $postarr ), true );
-			if ( is_wp_error( $result ) ) {
-				return $result;
-			}
+		// Always update the post, even for detail-only changes, so its modified date moves like an edit-screen save.
+		// wp_update_post() expects slashed data.
+		$result = wp_update_post( wp_slash( array( 'ID' => $post->ID ) + $postarr ), true );
+		if ( is_wp_error( $result ) ) {
+			return $result;
 		}
 		foreach ( $meta as $field => $value ) {
 			update_post_meta( $post->ID, $field, $value );
