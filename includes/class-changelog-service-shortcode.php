@@ -81,7 +81,7 @@ class Changelog_Service_Shortcode {
 	 *
 	 * @return array
 	 */
-	private function get_badge_configs(): array {
+	public function get_badge_configs(): array {
 		if ( isset( $this->badge_configs ) ) {
 			return $this->badge_configs;
 		}
@@ -808,7 +808,7 @@ class Changelog_Service_Shortcode {
 	 * @param string $version_text Full version text from the changelog header.
 	 * @return array Array with 'version' and 'secondary' keys.
 	 */
-	private function parse_version_string( string $version_text ): array {
+	public function parse_version_string( string $version_text ): array {
 		// Match the version number first (e.g., 1.3.0, 1.0.0-beta1, 2.0).
 		// Then strip any optional separator (dash, en-dash, em-dash, colon) from the remainder.
 		if ( preg_match( '/^(\d+\.\d+(?:\.\d+)*(?:-[a-zA-Z0-9.]+)?)\s*(.*)$/', $version_text, $matches ) ) {
