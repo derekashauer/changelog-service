@@ -3,7 +3,7 @@
  * Plugin Name: Changelog as a Service - Publish, Display, and Communicate Beautiful Changelogs
  * Plugin URI: https://changelogwp.com/caas/
  * Description: Publish and display beautiful changelogs for your WordPress plugins and themes. Provides REST API endpoints for changelog syndication.
- * Version: 1.3.3
+ * Version: 1.4.0
  * Author: ChangelogWP
  * Author URI: https://changelogwp.com/
  * License: GPL v2 or later
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define plugin constants.
-define( 'CAAS_VERSION', '1.3.3' );
+define( 'CAAS_VERSION', '1.4.0' );
 define( 'CAAS_PLUGIN_FILE', __FILE__ );
 define( 'CAAS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CAAS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

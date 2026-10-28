@@ -2,9 +2,9 @@
 Contributors: changelogwp, wpsunshine, pinedigital
 Tags: changelog, version history, updates, plugin changelog, release notes
 Requires at least: 5.8
-Tested up to: 7.1
+Tested up to: 7.1.3
 Requires PHP: 7.4
-Stable tag: 1.3.3
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -172,7 +172,7 @@ You can also enable this globally in **Changelogs > Settings > Display** by chec
 
 == Changelog ==
 
-= Unreleased =
+= 1.4.0 - October 28, 2026 =
 * Added: AI agents can list, read and update changelogs through WordPress abilities (WordPress 6.9+), including adding a new release to the top
 
 = 1.3.3 - September 15, 2026 =
