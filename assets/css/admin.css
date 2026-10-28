@@ -1,0 +1,164 @@
+/**
+ * ChangelogWP Admin Styles
+ *
+ * @package ChangelogWP
+ */
+
+/* Plain text editor for changelog content */
+#caas-content-wrap {
+	margin-top: 12px;
+}
+
+#caas-content-wrap label {
+	display: block;
+	margin-bottom: 8px;
+	font-weight: 600;
+}
+
+#caas-content-wrap .description {
+	margin-top: 8px;
+	font-style: italic;
+	color: #646970;
+}
+
+#caas-content-editor {
+	width: 100%;
+	min-height: 400px;
+	font-family: Consolas, Monaco, monospace;
+	font-size: 13px;
+	line-height: 1.6;
+	padding: 12px;
+	border: 1px solid #8c8f94;
+	border-radius: 4px;
+	resize: vertical;
+	background: #fff;
+}
+
+#caas-content-editor:focus {
+	border-color: #2271b1;
+	box-shadow: 0 0 0 1px #2271b1;
+	outline: none;
+}
+
+/* Meta fields box */
+.caas-meta-fields {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 16px;
+}
+
+.caas-meta-fields .field-group {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.caas-meta-fields .field-group.full-width {
+	grid-column: 1 / -1;
+}
+
+.caas-meta-fields label {
+	font-weight: 600;
+	color: #1d2327;
+}
+
+.caas-meta-fields input[type="text"],
+.caas-meta-fields input[type="url"] {
+	width: 100%;
+	padding: 6px 10px;
+}
+
+.caas-meta-fields .description {
+	font-size: 12px;
+	color: #646970;
+	margin-top: 2px;
+}
+
+/* Format help */
+.caas-format-help {
+	background: #f0f6fc;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	padding: 12px;
+	margin-top: 16px;
+}
+
+.caas-format-help h4 {
+	margin: 0 0 8px;
+	font-size: 13px;
+}
+
+.caas-format-help pre {
+	background: #fff;
+	padding: 10px;
+	border-radius: 3px;
+	font-size: 12px;
+	line-height: 1.5;
+	overflow-x: auto;
+	margin: 0;
+}
+
+/* Preview button */
+.caas-preview-btn {
+	margin-top: 12px;
+}
+
+/* API Endpoint meta box */
+.caas-api-endpoint {
+	margin-top: 8px;
+}
+
+.caas-api-endpoint .caas-copy-input {
+	font-family: Consolas, Monaco, monospace;
+	font-size: 11px;
+	padding: 6px 8px;
+	background: #f6f7f7;
+	cursor: text;
+	margin-bottom: 8px;
+}
+
+.caas-api-endpoint .caas-copy-btn {
+	width: 100%;
+}
+
+/* API Endpoint in list table */
+.caas-endpoint-cell {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.caas-endpoint-url {
+	font-size: 11px;
+	background: #f6f7f7;
+	padding: 4px 8px;
+	border-radius: 3px;
+	word-break: break-all;
+	max-width: 300px;
+	display: inline-block;
+}
+
+.caas-endpoint-cell .button-small {
+	flex-shrink: 0;
+}
+
+/* Column width */
+.column-api_endpoint {
+	width: 35%;
+}
+
+@media screen and (max-width: 782px) {
+	.caas-meta-fields {
+		grid-template-columns: 1fr;
+	}
+
+	.column-api_endpoint {
+		width: auto;
+	}
+
+	.caas-endpoint-url {
+		max-width: 100%;
+	}
+}
+

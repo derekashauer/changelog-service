@@ -1,0 +1,530 @@
+/**
+ * ChangelogWP Frontend Styles
+ *
+ * Badge system inspired by EDD Changelog Badges by Very Good Plugins.
+ * https://verygoodplugins.com/
+ *
+ * @package ChangelogWP
+ */
+
+.caas-changelog {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5em;
+}
+
+.caas-changelog h4 {
+	margin: 1.5em 0 0.75em;
+	padding-bottom: 0.5em;
+	border-bottom: 1px solid #e2e4e7;
+	font-size: 1.1em;
+	font-weight: 600;
+}
+
+.caas-changelog h4:first-child {
+	margin-top: 0;
+}
+
+.caas-changelog h4.anchoring,
+.caas-changelog h1.anchoring,
+.caas-changelog h2.anchoring,
+.caas-changelog h3.anchoring,
+.caas-changelog h5.anchoring,
+.caas-changelog h6.anchoring {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+}
+
+.caas-changelog h4.anchoring .caas-copy-link,
+.caas-changelog h1.anchoring .caas-copy-link,
+.caas-changelog h2.anchoring .caas-copy-link,
+.caas-changelog h3.anchoring .caas-copy-link,
+.caas-changelog h5.anchoring .caas-copy-link,
+.caas-changelog h6.anchoring .caas-copy-link {
+	opacity: 0.5;
+	transition: opacity 0.2s ease;
+}
+
+.caas-changelog h4.anchoring:hover .caas-copy-link,
+.caas-changelog h1.anchoring:hover .caas-copy-link,
+.caas-changelog h2.anchoring:hover .caas-copy-link,
+.caas-changelog h3.anchoring:hover .caas-copy-link,
+.caas-changelog h5.anchoring:hover .caas-copy-link,
+.caas-changelog h6.anchoring:hover .caas-copy-link {
+	opacity: 1;
+}
+
+.caas-changelog ul {
+	margin: 0 0 1.5em 0;
+	padding: 0;
+	list-style: none;
+}
+
+.caas-changelog ul li {
+	display: flex;
+	align-items: flex-start;
+	gap: 15px;
+	padding: 0.5em 0;
+	margin: 0;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.caas-changelog ul li:last-child {
+	border-bottom: none;
+}
+
+.caas-item-text {
+	flex: 1;
+	min-width: 0; /* Allows text to wrap properly in flexbox */
+	line-height: 22px;
+}
+
+/* Badge Base Styles */
+.caas-badge {
+	display: inline-block;
+	flex-shrink: 0;
+	padding: 2px 8px;
+	border-radius: 4px;
+	font-size: 11px;
+	line-height: 1;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	line-height: 1.8;
+	width: 100px;
+	text-align: center;
+	color: #fff;
+	white-space: nowrap;
+	box-sizing: border-box;
+}
+
+/* Badge Styles */
+.badge-style-rounded .caas-badge {
+	border-radius: 4px;
+}
+
+.badge-style-square .caas-badge {
+	border-radius: 0;
+}
+
+.badge-style-pill .caas-badge {
+	border-radius: 9999px;
+	padding: 2px 12px;
+}
+
+/* Badge Position - Left (default) */
+/* Flexbox handles alignment automatically */
+
+/* Badge Position - Inline */
+.badge-position-inline .caas-badge,
+.caas-changelog.badge-position-inline .caas-badge {
+	width: auto;
+}
+
+/* Badge Types */
+.caas-badge.added,
+.caas-badge.new {
+	background-color: #0e7a2a;
+}
+
+.caas-badge.improved {
+	background-color: #0a4c7f;
+}
+
+.caas-badge.fixed,
+.caas-badge.fix {
+	background-color: #a93800;
+}
+
+.caas-badge.security {
+	background-color: #8b0000;
+}
+
+.caas-badge.dev,
+.caas-badge.developer {
+	background-color: #1f262b;
+}
+
+.caas-badge.deprecated {
+	background-color: #6b7280;
+}
+
+.caas-badge.removed {
+	background-color: #dc2626;
+}
+
+.caas-badge.tweak {
+	background-color: #7c3aed;
+}
+
+/* Changelog Meta */
+.caas-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1em;
+	padding: 1em;
+	background: #f8f9fa;
+	border-radius: 6px;
+	font-size: 0.9em;
+}
+
+.caas-meta-item {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+}
+
+.caas-meta-label {
+	font-weight: 600;
+	color: #50575e;
+}
+
+.caas-meta-value {
+	color: #1d2327;
+}
+
+/* Version Header */
+.caas-version-header {
+	display: flex;
+	align-items: baseline;
+	gap: 1em;
+}
+
+.caas-version-date {
+	font-size: 0.85em;
+	color: #757575;
+	font-weight: normal;
+}
+
+/* Responsive */
+@media screen and (max-width: 600px) {
+	.caas-changelog.badge-position-left ul li {
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.caas-changelog.badge-position-left .caas-badge {
+		width: auto;
+		align-self: flex-start;
+	}
+
+	.caas-meta {
+		flex-direction: column;
+		gap: 0.5em;
+	}
+
+	.caas-item-text { 
+		display: block; 
+	}
+}
+
+/* Search */
+.caas-search {
+	/* Spacing handled by parent gap */
+}
+
+.caas-search-input {
+	width: 100%;
+	padding: 0.75em;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 1em;
+}
+
+.caas-search-input:focus {
+	outline: 2px solid #2271b1;
+	outline-offset: 2px;
+	border-color: #2271b1;
+	box-shadow: 0 0 0 1px #2271b1;
+}
+
+/* Badge Filters */
+.caas-badge-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5em;
+}
+
+.caas-filter-btn {
+	padding: 0.5em 1em;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	color: #fff !important;
+	cursor: pointer;
+	font-size: 0.9em;
+	transition: all 0.2s ease;
+	opacity: 1;
+}
+
+/* When showing all (no specific filter), all buttons are full opacity */
+.caas-badge-filters.showing-all .caas-filter-btn {
+	opacity: 1;
+}
+
+/* When a specific filter is active, non-active buttons are dimmed */
+.caas-badge-filters:not(.showing-all) .caas-filter-btn:not(.active) {
+	opacity: 0.6;
+}
+
+.caas-filter-btn:hover {
+	opacity: 0.8;
+}
+
+.caas-badge-filters.showing-all .caas-filter-btn:hover {
+	opacity: 1;
+}
+
+.caas-filter-btn:focus {
+	outline: 2px solid #2271b1;
+	outline-offset: 2px;
+	opacity: 0.8;
+}
+
+.caas-badge-filters.showing-all .caas-filter-btn:focus {
+	opacity: 1;
+}
+
+.caas-filter-btn.active {
+	opacity: 1;
+	border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Copy Link Button */
+.caas-copy-link {
+	background: transparent !important;
+	border: none !important;
+	cursor: pointer;
+	padding: 0 !important;
+	margin: 0 !important;
+	font-size: 0.85em;
+	display: inline-flex;
+	align-items: center;
+	line-height: 1;
+	color: #666 !important;
+	transition: color 0.2s ease;
+	box-shadow: none !important;
+	outline: none !important;
+	text-decoration: none !important;
+	vertical-align: baseline;
+	position: relative;
+}
+
+.caas-copy-link:hover {
+	color: #666 !important;
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+.caas-copy-link:focus {
+	color: #666 !important;
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+	outline: 2px solid #2271b1 !important;
+	outline-offset: 2px !important;
+}
+
+.caas-copy-link:active {
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+.caas-link-icon {
+	display: inline-flex;
+	align-items: center;
+	transition: opacity 0.2s ease;
+}
+
+.caas-link-icon svg {
+	width: 16px;
+	height: 16px;
+	fill: #666 !important;
+	vertical-align: middle;
+}
+
+.caas-copy-link.copied .caas-link-icon {
+	opacity: 0;
+}
+
+.caas-copied-text {
+	display: none !important;
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	margin-bottom: 8px;
+	padding: 4px 8px;
+	background: #333;
+	color: #fff;
+	border-radius: 4px;
+	font-weight: 600;
+	font-size: 0.75em;
+	white-space: nowrap;
+	z-index: 1000;
+	pointer-events: none;
+}
+
+.caas-copied-text::after {
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 5px solid transparent;
+	border-top-color: #333;
+}
+
+/* Screen reader text (WordPress standard class) */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	word-wrap: normal !important;
+}
+
+.caas-copy-link.copied .caas-copied-text {
+	display: block !important;
+}
+
+/* Release Notes */
+.caas-release-notes {
+	margin: 0.5em 0;
+	color: #555;
+	font-size: 0.95em;
+}
+
+.caas-release-notes p {
+	margin: 0.25em 0;
+}
+
+/* Signup Link */
+.caas-signup-link {
+	margin: 1em 0;
+}
+
+/* =====================================================
+   Timeline Template
+   ===================================================== */
+
+/* Vertical timeline line */
+.caas-template-timeline .caas-versions {
+	position: relative;
+}
+
+.caas-template-timeline .caas-versions::before {
+	content: '';
+	position: absolute;
+	left: 37px;
+	top: 0;
+	bottom: 0;
+	width: 3px;
+	background-color: var(--caas-timeline-line-color, #d1d5db);
+	border-radius: 2px;
+}
+
+/* Version section */
+.caas-template-timeline .caas-version-section {
+	padding-bottom: 2em;
+}
+
+.caas-template-timeline .caas-version-section:last-child {
+	padding-bottom: 0;
+}
+
+/* Marker row: version badge + secondary info */
+.caas-template-timeline .caas-timeline-marker {
+	display: flex;
+	align-items: center;
+	gap: 0.75em;
+	margin-bottom: 0.75em;
+}
+
+/* Version badge */
+.caas-template-timeline .caas-timeline-version-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 75px;
+	flex-shrink: 0;
+	padding: 6px 10px;
+	background-color: var(--caas-timeline-version-bg, #374151);
+	color: var(--caas-timeline-version-text, #ffffff);
+	border-radius: 6px;
+	font-size: 0.9em;
+	font-weight: 600;
+	white-space: nowrap;
+	line-height: 1.4;
+	box-sizing: border-box;
+	z-index: 1;
+	position: relative;
+}
+
+/* Secondary info */
+.caas-template-timeline .caas-timeline-secondary {
+	font-size: 0.95em;
+	color: #6b7280;
+}
+
+/* Changelog items — aligned with the date */
+.caas-template-timeline .caas-timeline-content {
+	padding-left: calc(75px + 0.75em);
+}
+
+/* Copy link in marker */
+.caas-template-timeline .caas-timeline-marker .caas-copy-link {
+	opacity: 0;
+	transition: opacity 0.2s ease;
+}
+
+.caas-template-timeline .caas-timeline-marker:hover .caas-copy-link {
+	opacity: 0.5;
+}
+
+.caas-template-timeline .caas-timeline-marker:hover .caas-copy-link:hover {
+	opacity: 1;
+}
+
+/* Override default heading/ul styles */
+.caas-template-timeline .caas-version-section h1,
+.caas-template-timeline .caas-version-section h2,
+.caas-template-timeline .caas-version-section h3,
+.caas-template-timeline .caas-version-section h4,
+.caas-template-timeline .caas-version-section h5,
+.caas-template-timeline .caas-version-section h6 {
+	border-bottom: none;
+	margin: 0;
+	padding: 0;
+}
+
+.caas-template-timeline .caas-version-section ul {
+	margin-bottom: 0;
+}
+
+/* Timeline Responsive */
+@media screen and (max-width: 600px) {
+	.caas-template-timeline .caas-timeline-content {
+		padding-left: calc(60px + 0.5em);
+	}
+
+	.caas-template-timeline .caas-timeline-version-badge {
+		width: 60px;
+		font-size: 0.8em;
+		padding: 4px 8px;
+	}
+
+	.caas-template-timeline .caas-timeline-marker {
+		gap: 0.5em;
+	}
+
+	.caas-template-timeline .caas-timeline-secondary {
+		font-size: 0.85em;
+	}
+}
+
+
